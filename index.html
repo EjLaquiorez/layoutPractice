@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Practice — Learn HTML &amp; CSS Layouts</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="index.html" class="site-header__logo">Layout Practice</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="site-nav__toggle" data-nav-toggle aria-label="Toggle navigation">&#9776;</button>
+        <ul class="site-nav__list" data-nav-list>
+          <li><a href="index.html" class="site-nav__link">Home</a></li>
+          <li><a href="practice/index.html" class="site-nav__link">Practice</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page__main">
+    <section class="hero container">
+      <h1 class="hero__title">Learn to build layouts with HTML &amp; CSS</h1>
+      <p class="hero__text">
+        Practice creating divs, sections, flexbox, and grid layouts step by step.
+        Follow examples or build your own structure from scratch.
+      </p>
+      <div class="hero__actions">
+        <a href="practice/index.html" class="btn btn--primary">Start practicing</a>
+        <a href="practice/divs-and-sections/index.html" class="btn btn--secondary">First lesson</a>
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section__title">What you'll learn</h2>
+      <p class="section__subtitle">Work through hands-on modules that teach you how to structure and style page layouts.</p>
+      <div class="card-grid">
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--available">Available</span>
+          <h3 class="practice-card__title">Divs &amp; Sections</h3>
+          <p class="practice-card__text">Learn when to use generic divs vs semantic section elements to organize your page.</p>
+          <a href="practice/divs-and-sections/index.html" class="practice-card__link">Open module &rarr;</a>
+        </article>
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--soon">Coming soon</span>
+          <h3 class="practice-card__title">Flexbox</h3>
+          <p class="practice-card__text">Arrange items in rows and columns with flexible spacing and alignment.</p>
+          <a href="practice/flexbox/index.html" class="practice-card__link">Preview module &rarr;</a>
+        </article>
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--soon">Coming soon</span>
+          <h3 class="practice-card__title">CSS Grid</h3>
+          <p class="practice-card__text">Build two-dimensional layouts with rows, columns, and named areas.</p>
+          <a href="practice/grid/index.html" class="practice-card__link">Preview module &rarr;</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__text">Layout Practice — HTML &amp; CSS learning project</p>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

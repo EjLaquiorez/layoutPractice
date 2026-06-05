@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Grid Example</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, sans-serif; padding: 1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    .cell {
+      padding: 1rem;
+      border-radius: 0.375rem;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+    .cell:nth-child(1) { background-color: #6366f1; }
+    .cell:nth-child(2) { background-color: #8b5cf6; }
+    .cell:nth-child(3) { background-color: #3b82f6; }
+    .cell:nth-child(4) { background-color: #06b6d4; grid-column: span 2; }
+    .cell:nth-child(5) { background-color: #10b981; }
+    .cell:nth-child(6) { background-color: #f59e0b; }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="cell">1</div>
+    <div class="cell">2</div>
+    <div class="cell">3</div>
+    <div class="cell">4 (spans 2 cols)</div>
+    <div class="cell">5</div>
+    <div class="cell">6</div>
+  </div>
+</body>
+</html>

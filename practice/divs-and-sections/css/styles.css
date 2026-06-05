@@ -1,0 +1,64 @@
+/* Demo styles for divs-and-sections examples */
+
+.demo-box {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.demo-box--header { background-color: #6366f1; }
+.demo-box--sidebar { background-color: #8b5cf6; }
+.demo-box--main { background-color: #3b82f6; min-height: 8rem; }
+.demo-box--footer { background-color: #64748b; }
+
+.demo-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.demo-layout__row {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.demo-layout__sidebar {
+  flex: 0 0 30%;
+}
+
+.demo-layout__main {
+  flex: 1;
+}
+
+.demo-semantic header,
+.demo-semantic main,
+.demo-semantic footer,
+.demo-semantic section {
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.demo-semantic header { background-color: #6366f1; }
+.demo-semantic main { background-color: #3b82f6; min-height: 6rem; }
+.demo-semantic section { background-color: #06b6d4; margin-top: var(--space-sm); }
+.demo-semantic footer { background-color: #64748b; margin-top: var(--space-sm); }
+
+.starter-area__blocks {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.starter-area__block {
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Divs &amp; Sections — Layout Practice</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/practice-common.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="../../index.html" class="site-header__logo">Layout Practice</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="site-nav__toggle" data-nav-toggle aria-label="Toggle navigation">&#9776;</button>
+        <ul class="site-nav__list" data-nav-list>
+          <li><a href="../../index.html" class="site-nav__link">Home</a></li>
+          <li><a href="../index.html" class="site-nav__link">Practice</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page__main">
+    <div class="container">
+      <header class="lesson-header">
+        <a href="../index.html" class="lesson-header__back">&larr; Back to practice hub</a>
+        <h1 class="lesson-header__title">Divs &amp; Sections</h1>
+        <p class="lesson-header__desc">
+          Learn how to group content using generic div containers and semantic HTML sections
+          to match your desired page layout.
+        </p>
+      </header>
+
+      <div class="lesson-tabs" data-tabs>
+        <nav class="lesson-tabs__nav" role="tablist">
+          <button class="lesson-tabs__button is-active" data-tab-button="instructions" role="tab">Instructions</button>
+          <button class="lesson-tabs__button" data-tab-button="example" role="tab">Example</button>
+          <button class="lesson-tabs__button" data-tab-button="try-it" role="tab">Try it</button>
+        </nav>
+
+        <div class="lesson-tabs__panel is-active lesson-content" data-tab-panel="instructions" role="tabpanel">
+          <h3>What are divs and sections?</h3>
+          <p>
+            A <strong>&lt;div&gt;</strong> is a generic container with no built-in meaning.
+            Use divs when you need a wrapper purely for styling or layout purposes.
+          </p>
+          <p>
+            A <strong>&lt;section&gt;</strong> is a semantic element that groups related content
+            into a thematic section of the page. Screen readers and search engines understand
+            its purpose better than a plain div.
+          </p>
+          <h3>When to use each</h3>
+          <ul>
+            <li>Use <strong>div</strong> for layout wrappers (rows, columns, spacing groups).</li>
+            <li>Use <strong>section</strong> when content belongs to a distinct topic or area.</li>
+            <li>Use <strong>header</strong>, <strong>main</strong>, and <strong>footer</strong> for page landmarks.</li>
+          </ul>
+          <h3>Basic structure pattern</h3>
+          <pre class="code-block">&lt;div class="layout"&gt;
+  &lt;div class="layout__header"&gt;Header&lt;/div&gt;
+  &lt;div class="layout__body"&gt;
+    &lt;div class="layout__sidebar"&gt;Sidebar&lt;/div&gt;
+    &lt;div class="layout__main"&gt;Main&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="layout__footer"&gt;Footer&lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+
+        <div class="lesson-tabs__panel lesson-content" data-tab-panel="example" role="tabpanel">
+          <h3>Basic div layout</h3>
+          <p>A classic header / sidebar / main / footer structure built with nested divs.</p>
+          <div class="example-preview">
+            <div class="demo-layout">
+              <div class="demo-box demo-box--header">Header</div>
+              <div class="demo-layout__row">
+                <div class="demo-layout__sidebar">
+                  <div class="demo-box demo-box--sidebar">Sidebar</div>
+                </div>
+                <div class="demo-layout__main">
+                  <div class="demo-box demo-box--main">Main content</div>
+                </div>
+              </div>
+              <div class="demo-box demo-box--footer">Footer</div>
+            </div>
+          </div>
+          <a href="examples/basic-divs.html" class="example-preview__link" target="_blank">Open standalone example &rarr;</a>
+
+          <h3 style="margin-top: 2rem;">Semantic sections</h3>
+          <p>The same idea using meaningful HTML elements instead of generic divs.</p>
+          <div class="example-preview">
+            <div class="demo-semantic">
+              <header>Site Header</header>
+              <main>
+                Main content area
+                <section>Featured section</section>
+              </main>
+              <footer>Site Footer</footer>
+            </div>
+          </div>
+          <a href="examples/semantic-sections.html" class="example-preview__link" target="_blank">Open standalone example &rarr;</a>
+        </div>
+
+        <div class="lesson-tabs__panel lesson-content" data-tab-panel="try-it" role="tabpanel">
+          <h3>Build your own layout</h3>
+          <p>
+            Use the starter blocks below as a guide. Rearrange or add divs and sections
+            to match a layout you have in mind. Edit this page's HTML to experiment.
+          </p>
+          <div class="starter-area">
+            <p class="starter-area__label">Starter structure</p>
+            <div class="starter-area__blocks">
+              <div class="starter-area__block">Header area — add a &lt;header&gt; or &lt;div&gt;</div>
+              <div class="starter-area__block">Content area — nest sidebar and main columns here</div>
+              <div class="starter-area__block">Footer area — add a &lt;footer&gt; or &lt;div&gt;</div>
+            </div>
+          </div>
+          <p class="starter-area__hint">
+            Tip: Open <code>practice/divs-and-sections/index.html</code> in your editor and modify the Try it tab markup.
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__text">Layout Practice — HTML &amp; CSS learning project</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/practice.js"></script>
+  <script type="module" src="../../js/main.js"></script>
+</body>
+</html>

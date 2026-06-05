@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practice Hub — Layout Practice</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="css/practice-common.css">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="../index.html" class="site-header__logo">Layout Practice</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="site-nav__toggle" data-nav-toggle aria-label="Toggle navigation">&#9776;</button>
+        <ul class="site-nav__list" data-nav-list>
+          <li><a href="../index.html" class="site-nav__link">Home</a></li>
+          <li><a href="index.html" class="site-nav__link">Practice</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page__main">
+    <div class="container">
+      <header class="lesson-header">
+        <a href="../index.html" class="lesson-header__back">&larr; Back to home</a>
+        <h1 class="lesson-header__title">Practice modules</h1>
+        <p class="lesson-header__desc">
+          Choose a topic to learn how to structure and lay out web pages.
+          Each module includes instructions, examples, and a space to try it yourself.
+        </p>
+      </header>
+
+      <div class="card-grid">
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--available">Available</span>
+          <h2 class="practice-card__title">Divs &amp; Sections</h2>
+          <p class="practice-card__text">
+            Understand the difference between generic containers and semantic sections.
+            Build page structures that match common layout patterns.
+          </p>
+          <a href="divs-and-sections/index.html" class="practice-card__link">Start lesson &rarr;</a>
+        </article>
+
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--soon">Coming soon</span>
+          <h2 class="practice-card__title">Flexbox</h2>
+          <p class="practice-card__text">
+            Learn flex-direction, justify-content, and align-items to control
+            how items flow in a container.
+          </p>
+          <a href="flexbox/index.html" class="practice-card__link">Preview lesson &rarr;</a>
+        </article>
+
+        <article class="practice-card">
+          <span class="practice-card__badge practice-card__badge--soon">Coming soon</span>
+          <h2 class="practice-card__title">CSS Grid</h2>
+          <p class="practice-card__text">
+            Create grid templates with rows and columns. Place items exactly
+            where you want them on the page.
+          </p>
+          <a href="grid/index.html" class="practice-card__link">Preview lesson &rarr;</a>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__text">Layout Practice — HTML &amp; CSS learning project</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/main.js"></script>
+</body>
+</html>

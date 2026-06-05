@@ -1,0 +1,24 @@
+.demo-flex {
+  display: flex;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
+  border-radius: var(--radius-md);
+}
+
+.demo-flex--column {
+  flex-direction: column;
+}
+
+.demo-flex__item {
+  flex: 1;
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+}
+
+.demo-flex__item:nth-child(1) { background-color: #6366f1; }
+.demo-flex__item:nth-child(2) { background-color: #8b5cf6; }
+.demo-flex__item:nth-child(3) { background-color: #3b82f6; }

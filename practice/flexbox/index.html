@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flexbox — Layout Practice</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="../css/practice-common.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="page">
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a href="../../index.html" class="site-header__logo">Layout Practice</a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <button class="site-nav__toggle" data-nav-toggle aria-label="Toggle navigation">&#9776;</button>
+        <ul class="site-nav__list" data-nav-list>
+          <li><a href="../../index.html" class="site-nav__link">Home</a></li>
+          <li><a href="../index.html" class="site-nav__link">Practice</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page__main">
+    <div class="container">
+      <header class="lesson-header">
+        <a href="../index.html" class="lesson-header__back">&larr; Back to practice hub</a>
+        <h1 class="lesson-header__title">Flexbox</h1>
+        <p class="lesson-header__desc">
+          Learn how to arrange items in rows and columns using CSS flexbox.
+          Full exercises coming soon — preview the module structure below.
+        </p>
+      </header>
+
+      <div class="lesson-tabs" data-tabs>
+        <nav class="lesson-tabs__nav" role="tablist">
+          <button class="lesson-tabs__button is-active" data-tab-button="instructions" role="tab">Instructions</button>
+          <button class="lesson-tabs__button" data-tab-button="example" role="tab">Example</button>
+          <button class="lesson-tabs__button" data-tab-button="try-it" role="tab">Try it</button>
+        </nav>
+
+        <div class="lesson-tabs__panel is-active lesson-content" data-tab-panel="instructions" role="tabpanel">
+          <h3>What is flexbox?</h3>
+          <p>
+            Flexbox is a one-dimensional layout method for arranging items in a row or a column.
+            Set <code>display: flex</code> on a container to control how its children are distributed.
+          </p>
+          <h3>Key properties</h3>
+          <ul>
+            <li><strong>flex-direction</strong> — row (default) or column</li>
+            <li><strong>justify-content</strong> — alignment along the main axis</li>
+            <li><strong>align-items</strong> — alignment along the cross axis</li>
+            <li><strong>gap</strong> — spacing between items</li>
+          </ul>
+          <p><em>Full lesson content coming soon.</em></p>
+        </div>
+
+        <div class="lesson-tabs__panel lesson-content" data-tab-panel="example" role="tabpanel">
+          <h3>Row and column layouts</h3>
+          <p>Three items in a row, then the same items stacked in a column.</p>
+          <div class="example-preview">
+            <div class="demo-flex">
+              <div class="demo-flex__item">Item 1</div>
+              <div class="demo-flex__item">Item 2</div>
+              <div class="demo-flex__item">Item 3</div>
+            </div>
+            <div class="demo-flex demo-flex--column" style="margin-top: 0.5rem;">
+              <div class="demo-flex__item">Stacked 1</div>
+              <div class="demo-flex__item">Stacked 2</div>
+              <div class="demo-flex__item">Stacked 3</div>
+            </div>
+          </div>
+          <a href="examples/row-column.html" class="example-preview__link" target="_blank">Open standalone example &rarr;</a>
+        </div>
+
+        <div class="lesson-tabs__panel lesson-content" data-tab-panel="try-it" role="tabpanel">
+          <h3>Try it yourself</h3>
+          <p>Exercise area placeholder — add a flex container here and experiment with direction and alignment.</p>
+          <div class="starter-area">
+            <p class="starter-area__label">Starter container</p>
+            <p class="starter-area__hint">Add <code>display: flex</code> to a div and place child items inside it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__inner">
+      <p class="site-footer__text">Layout Practice — HTML &amp; CSS learning project</p>
+    </div>
+  </footer>
+
+  <script type="module" src="../js/practice.js"></script>
+  <script type="module" src="../../js/main.js"></script>
+</body>
+</html>
