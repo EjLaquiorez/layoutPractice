@@ -31,13 +31,17 @@ layoutPractice/
 ├── assets/
 │   ├── images/
 │   └── icons/
-└── practice/
-    ├── index.html             # Module hub
-    ├── css/practice-common.css
-    ├── js/practice.js
-    ├── divs-and-sections/     # Available lesson
-    ├── flexbox/               # Coming soon
-    └── grid/                  # Coming soon
+├── practice/
+│   ├── index.html             # Module hub
+│   ├── css/practice-common.css
+│   ├── js/practice.js
+│   ├── divs-and-sections/     # Available lesson
+│   ├── flexbox/               # Coming soon
+│   └── grid/                  # Coming soon
+└── coder/                     # Your private practice workspace (not linked from the site)
+    ├── index.html             # Main playground
+    ├── css/styles.css
+    └── experiments/starter/   # Copy this folder for each new layout try
 ```
 
 ## Conventions
@@ -62,6 +66,15 @@ Each module page has three tabs:
 | Divs & Sections | Available | `practice/divs-and-sections/` |
 | Flexbox | Coming soon | `practice/flexbox/` |
 | CSS Grid | Coming soon | `practice/grid/` |
+
+## Coder workspace
+
+The [`coder/`](coder/) folder is your personal sandbox. It is separate from the public lesson pages — edit freely without affecting the site.
+
+- [coder/index.html](coder/index.html) — main playground
+- [coder/experiments/starter/](coder/experiments/starter/) — duplicate for each new layout experiment
+
+See [coder/README.md](coder/README.md) for details.
 
 ## Adding a new module
 

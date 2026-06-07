@@ -1,0 +1,81 @@
+/* Coder playground — follow the STEP comments below as you build in index.html */
+
+/* Base reset — keeps sizing predictable */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.5;
+  color: #1a1a1a;
+}
+
+
+/* ============================================================
+   STEP 5 — Style your layout boxes
+   Match these class names to the HTML in index.html
+   ============================================================ */
+
+/* STEP 5a: make the page a vertical stack (header → body → footer) */
+.layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* STEP 5b: style the header — full width bar at the top */
+.layout__header {
+  padding: 1rem;
+  background-color: #6366f1;
+  color: #fff;
+  text-align: center;
+}
+
+/* STEP 5c: body row — put sidebar and main SIDE BY SIDE */
+.layout__body {
+  flex: 1;                 /* fills remaining height between header and footer */
+  display: flex;           /* turns children into a horizontal row */
+  gap: 0.5rem;             /* space between sidebar and main */
+  padding: 0.5rem;
+  background-color: #f3f4f6;
+}
+
+/* STEP 5d: sidebar — fixed-ish width on the left */
+.layout__sidebar {
+  flex: 0 0 200px;         /* don't grow/shrink; stay 200px wide */
+  padding: 1rem;
+  background-color: #8b5cf6;
+  color: #fff;
+  border-radius: 0.375rem;
+}
+
+/* STEP 5e: main — takes all leftover horizontal space */
+.layout__main {
+  flex: 1;                 /* grow to fill the rest of the row */
+  padding: 1rem;
+  background-color: #3b82f6;
+  color: #fff;
+  border-radius: 0.375rem;
+}
+
+/* STEP 5f: footer — full width bar at the bottom */
+.layout__footer {
+  padding: 1rem;
+  background-color: #64748b;
+  color: #fff;
+  text-align: center;
+}
+
+
+/* ============================================================
+   NEXT STEPS (when the basic layout works)
+   ============================================================
+   - Add padding/margin inside .layout__main for inner sections
+   - Use max-width + margin: auto on .layout for a centered page
+   - Try flex-direction: column on .layout__body for mobile (media query)
+   - Or rebuild the same structure using CSS Grid instead of flex
+   ============================================================ */

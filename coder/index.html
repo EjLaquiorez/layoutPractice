@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coder Playground — Layout Practice</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!--
+    HOW TO BUILD YOUR FIRST LAYOUT
+    ==============================
+    Follow the steps below in order. After each step, save and refresh the browser.
+
+    STEP 1 — Picture the layout
+    Draw boxes on paper (or imagine them):
+      [ Header — full width ]
+      [ Sidebar ] [ Main content ]
+      [ Footer — full width ]
+
+    STEP 2 — Wrap everything in one outer container
+    Use ONE parent div so you can control the whole page as a unit.
+    Give it a class name you understand, like "page" or "layout".
+
+    STEP 3 — Add the main areas
+    Inside that wrapper, add:
+      - a header  (top bar / logo / nav)
+      - a body row (sidebar + main side by side)
+      - a footer  (bottom bar)
+
+    STEP 4 — Nest columns inside the body row
+    The body row holds TWO children:
+      - sidebar div
+      - main content div
+
+    STEP 5 — Style in css/styles.css
+    Open css/styles.css and follow the matching STEP comments there.
+    Start with borders/background colors so you can SEE each box before polishing.
+
+    STEP 6 — Replace placeholder text
+    Once boxes sit where you want, swap "Header", "Sidebar", etc. with real content.
+
+    TIP: Use div for layout-only boxes. Use header, main, footer, section
+    when the area has a clear meaning (better for accessibility).
+  -->
+
+
+  <!-- STEP 2: outer wrapper — start here -->
+  <div class="layout">
+
+    <!-- STEP 3a: top area -->
+    <header class="layout__header">
+      Header
+    </header>
+
+    <!-- STEP 3b: middle row — sidebar and main go inside -->
+    <div class="layout__body">
+
+      <!-- STEP 4a: left column -->
+      <aside class="layout__sidebar">
+        Sidebar
+      </aside>
+
+      <!-- STEP 4b: right column (main content) -->
+      <main class="layout__main">
+        Main content
+      </main>
+
+    </div>
+
+    <!-- STEP 3c: bottom area -->
+    <footer class="layout__footer">
+      Footer
+    </footer>
+
+  </div>
+
+
+  <!--
+    YOUR TURN — try changing things:
+    - Add another section inside .layout__main
+    - Rename classes (update CSS too if you do)
+    - Copy experiments/starter/ for a second layout from scratch
+  -->
+
+</body>
+</html>
