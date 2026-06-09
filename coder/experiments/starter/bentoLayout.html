@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Layout Sample</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    header {
+      padding: 1.5rem 1rem;
+      background: #ffffff;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.75rem;
+      letter-spacing: -0.04em;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      color: #4b5563;
+      max-width: 40rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      align-items: stretch;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.25rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 180px;
+    }
+
+    .card.feature {
+      grid-column: span 2;
+      min-height: 240px;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      margin: 0.85rem 0 0;
+      line-height: 1.6;
+      color: #4b5563;
+    }
+
+    .card small {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 640px) {
+      .card.feature {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bento Layout Sample</h1>
+    <p>A clean, responsive bento-style website layout for dashboard panels and content cards.</p>
+  </header>
+  <main>
+    <div class="grid">
+      <section class="card feature">
+        <div>
+          <h2>Featured Panel</h2>
+          <p>Use the large panel for hero text, quick metrics, or a highlighted announcement.</p>
+        </div>
+        <small>Perfect for the main message of the page.</small>
+      </section>
+
+      <section class="card">
+        <h2>Overview</h2>
+        <p>Summarize progress, stats, or recent activity in a compact block.</p>
+      </section>
+
+      <section class="card">
+        <h2>Projects</h2>
+        <p>Display active tasks, release notes, or next steps with a clean card design.</p>
+      </section>
+
+      <section class="card">
+        <h2>Quick Actions</h2>
+        <p>Link users to important pages, onboarding steps, or common actions.</p>
+      </section>
+
+      <section class="card">
+        <h2>Notes</h2>
+        <p>Keep reminders, tips, or quick references easily accessible.</p>
+      </section>
+
+      <section class="card">
+        <h2>Settings</h2>
+        <p>Show account controls, preferences, or custom options in a polished tile.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
