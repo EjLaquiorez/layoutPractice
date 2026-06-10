@@ -5,81 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bento Layout Sample</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #eff6ff;
+      --panel: rgba(255, 255, 255, 0.92);
+      --panel-strong: #ffffff;
+      --text: #111827;
+      --muted: #475569;
+      --border: rgba(148, 163, 184, 0.18);
+      --shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f3f4f6;
-      color: #111827;
+      background:
+        radial-gradient(circle at top, #ffffff 0%, var(--bg) 45%, #e0f2fe 100%);
+      color: var(--text);
     }
 
     header {
-      padding: 1.5rem 1rem;
-      background: #ffffff;
-      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.08);
+      padding: 1.5rem 1rem 1rem;
+      background: rgba(255, 255, 255, 0.78);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
     }
 
     header h1 {
       margin: 0;
-      font-size: 1.75rem;
-      letter-spacing: -0.04em;
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.06em;
     }
 
     header p {
-      margin: 0.5rem 0 0;
-      color: #4b5563;
-      max-width: 40rem;
+      margin: 0.6rem 0 0;
+      color: var(--muted);
+      max-width: 42rem;
+      font-size: 1.02rem;
     }
 
     main {
       max-width: 1200px;
-      margin: 1.5rem auto;
+      margin: 1.25rem auto 2rem;
       padding: 0 1rem;
     }
 
     .grid {
       display: grid;
       gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
       align-items: stretch;
     }
 
     .card {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.25rem;
-      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      position: relative;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-height: 180px;
+      padding: 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: 1.1rem;
+      background: linear-gradient(145deg, var(--panel-strong), var(--panel));
+      box-shadow: var(--shadow);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 4px;
+      background: linear-gradient(90deg, #2563eb, #8b5cf6, #22d3ee);
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 22px 42px rgba(15, 23, 42, 0.16);
     }
 
     .card.feature {
       grid-column: span 2;
-      min-height: 240px;
+      min-height: 250px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.98), rgba(224,242,254,0.92));
     }
 
     .card h2 {
       margin: 0;
-      font-size: 1.15rem;
+      font-size: 1.12rem;
+      color: #0f172a;
+      letter-spacing: -0.03em;
     }
 
     .card p {
-      margin: 0.85rem 0 0;
-      line-height: 1.6;
-      color: #4b5563;
+      margin: 0.75rem 0 0;
+      line-height: 1.55;
+      color: var(--muted);
+      font-size: 0.98rem;
     }
 
     .card small {
       display: inline-block;
       margin-top: 1rem;
-      color: #6b7280;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.74rem;
+    }
+
+    @media (max-width: 760px) {
+      .card.feature {
+        grid-column: span 1;
+      }
     }
 
     @media (max-width: 640px) {
-      .card.feature {
-        grid-column: span 1;
+      header {
+        padding-inline: 0.9rem;
+      }
+
+      main {
+        padding: 0 0.9rem;
+      }
+
+      .grid {
+        gap: 0.9rem;
       }
     }
   </style>
