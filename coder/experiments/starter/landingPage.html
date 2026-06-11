@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout Practice Landing Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #333;
+      line-height: 1.6;
+      background: #f4f4f4;
+    }
+    .hero {
+      background: linear-gradient(135deg, #4a90e2, #50c9c3);
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 2.8rem;
+    }
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+    .section {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .cards {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+    .layout-samples {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+    }
+    .sample {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      min-height: 180px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+    .sample span {
+      display: inline-block;
+      margin-top: 10px;
+      color: #666;
+    }
+    @media (max-width: 700px) {
+      .layout-samples {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Landing Page Layouts</h1>
+    <p>Explore simple, clean page layouts built for landing pages. Use modular sections, responsive grids, and clear visual hierarchy to present your content.</p>
+  </section>
+
+  <section class="section">
+    <div class="cards">
+      <div class="card">
+        <h2>Section-Based Design</h2>
+        <p>Break your landing page into distinct sections with strong headings and simple copy for easy scanning.</p>
+      </div>
+      <div class="card">
+        <h2>Responsive Grid</h2>
+        <p>Use a grid layout to arrange features or examples so the page adapts to mobile and desktop screens.</p>
+      </div>
+      <div class="card">
+        <h2>Visual Flow</h2>
+        <p>Keep the visual flow clear by using consistent spacing, contrasting colors, and intuitive content blocks.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Layout Examples</h2>
+    <div class="layout-samples">
+      <div class="sample">
+        <strong>Hero + Features</strong>
+        <span>Hero banner, feature cards, and a footer section.</span>
+      </div>
+      <div class="sample">
+        <strong>Content + CTA</strong>
+        <span>Simple text blocks with a prominent call to action.</span>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
