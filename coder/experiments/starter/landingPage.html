@@ -29,9 +29,12 @@
       line-height: 1.6;
     }
 
+    /* make the layout expand corner-to-corner on all screens */
     .page {
-      width: min(1160px, calc(100% - 32px));
-      margin: 0 auto;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0 24px; /* keep some inner spacing */
     }
 
     header {
