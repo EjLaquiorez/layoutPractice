@@ -1,0 +1,1873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn how to build a modern, high-converting landing page from scratch. Free step-by-step guide with downloadable template and checklist.">
+  <meta property="og:title" content="How to Create a Landing Page That Converts — Free Guide">
+  <meta property="og:description" content="Free step-by-step guide + downloadable template for beginners. No design or coding skills needed.">
+  <title>How to Create a Landing Page That Converts — Free Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #4f46e5;
+      --brand-dark: #4338ca;
+      --brand-soft: #e0e7ff;
+      --brand-lighter: #eef2ff;
+      --surface: #ffffff;
+      --surface-warm: #f8fafc;
+      --surface-soft: #f1f5f9;
+      --text: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --border: #e2e8f0;
+      --border-light: #f1f5f9;
+      --success: #10b981;
+      --success-soft: #d1fae5;
+      --warning: #f59e0b;
+      --error: #ef4444;
+      --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+      --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+      --shadow-md: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+      --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+      --shadow-xl: 0 24px 80px rgba(15, 23, 42, 0.12);
+      --radius-sm: 12px;
+      --radius: 20px;
+      --radius-lg: 28px;
+      --radius-full: 999px;
+      --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: #f5f7fb;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+      transition: var(--transition);
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.03em;
+    }
+
+    .nav-brand svg { width: 28px; height: 28px; color: var(--brand); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover {
+      color: var(--brand);
+      background: var(--brand-lighter);
+    }
+
+    .nav-cta {
+      background: var(--brand) !important;
+      color: white !important;
+      padding: 10px 24px !important;
+      font-weight: 600 !important;
+      margin-left: 8px;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    .nav-cta:hover {
+      background: var(--brand-dark) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: var(--text);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 160px 32px 100px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(79,70,229,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 80% 100%, rgba(165,180,252,0.1) 0%, transparent 40%),
+        #f5f7fb;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(79,70,229,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--brand);
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-sm);
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+
+    .hero-badge svg { width: 16px; height: 16px; }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      color: var(--text);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .hero h1 .accent {
+      color: var(--brand);
+      position: relative;
+      display: inline-block;
+    }
+
+    .hero h1 .accent::after {
+      content: '';
+      position: absolute;
+      bottom: 4px;
+      left: -4px;
+      right: -4px;
+      height: 12px;
+      background: var(--brand-soft);
+      z-index: -1;
+      border-radius: 4px;
+      opacity: 0.6;
+    }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: var(--radius-full);
+      font-size: 0.95rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--brand);
+      color: white;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: var(--brand-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.5);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--brand);
+      color: var(--brand);
+      background: var(--brand-lighter);
+      transform: translateY(-2px);
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      animation: fadeInUp 0.6s ease 0.5s both;
+    }
+
+    .trust-avatars { display: flex; }
+
+    .trust-avatar {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-left: -10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .trust-avatar:first-child { margin-left: 0; background: #4f46e5; }
+    .trust-avatar:nth-child(2) { background: #8b5cf6; }
+    .trust-avatar:nth-child(3) { background: #10b981; }
+    .trust-avatar:nth-child(4) { background: #f59e0b; }
+
+    .trust-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .trust-text strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    /* Hero Visual */
+    .hero-visual {
+      position: relative;
+      animation: fadeInUp 0.8s ease 0.3s both;
+    }
+
+    .browser-mockup {
+      background: white;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-xl);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transform: perspective(1000px) rotateY(-3deg) rotateX(2deg);
+      transition: var(--transition);
+    }
+
+    .browser-mockup:hover {
+      transform: perspective(1000px) rotateY(0deg) rotateX(0deg);
+    }
+
+    .browser-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 18px;
+      background: var(--surface-warm);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .browser-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+    .dot-red { background: #ef4444; }
+    .dot-yellow { background: #f59e0b; }
+    .dot-green { background: #10b981; }
+
+    .browser-url {
+      flex: 1;
+      background: white;
+      padding: 6px 16px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      color: var(--text-light);
+      border: 1px solid var(--border);
+      margin-left: 8px;
+      text-align: center;
+    }
+
+    .browser-body {
+      padding: 32px;
+      min-height: 340px;
+    }
+
+    .mock-hero {
+      text-align: center;
+      padding: 36px 24px;
+      background: linear-gradient(135deg, var(--brand-lighter), #e0e7ff);
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+    }
+
+    .mock-hero h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 8px;
+    }
+
+    .mock-hero p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .mock-cta {
+      display: inline-block;
+      background: var(--brand);
+      color: white;
+      padding: 10px 24px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 16px;
+    }
+
+    .mock-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .mock-card {
+      background: var(--surface-warm);
+      padding: 18px 12px;
+      border-radius: var(--radius-sm);
+      text-align: center;
+    }
+
+    .mock-icon {
+      width: 32px; height: 32px;
+      background: var(--brand-soft);
+      border-radius: 8px;
+      margin: 0 auto 10px;
+    }
+
+    .mock-card h4 {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--text);
+    }
+
+    .mock-card p {
+      font-size: 0.7rem;
+      color: var(--text-light);
+    }
+
+    /* ===== SOCIAL PROOF BAR ===== */
+    .social-bar {
+      padding: 48px 32px;
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .social-bar-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .social-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 28px;
+    }
+
+    .social-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+      opacity: 0.45;
+    }
+
+    .social-logo {
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      letter-spacing: -0.02em;
+    }
+
+    .social-proof-stats {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      margin-top: 48px;
+      flex-wrap: wrap;
+    }
+
+    .stat-item { text-align: center; }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--brand);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-top: 8px;
+    }
+
+    /* ===== SECTIONS COMMON ===== */
+    .section-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 72px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--brand-lighter);
+      color: var(--brand);
+      padding: 6px 16px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .section-desc {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* ===== PROBLEM SECTION ===== */
+    .problem {
+      padding: 120px 0;
+      background: white;
+    }
+
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .problem-card {
+      background: var(--surface-warm);
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .problem-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand), #8b5cf6);
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .problem-card:hover {
+      border-color: var(--brand-soft);
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .problem-card:hover::before { opacity: 1; }
+
+    .problem-icon {
+      width: 64px;
+      height: 64px;
+      background: white;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: var(--shadow-sm);
+      font-size: 1.75rem;
+    }
+
+    .problem-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .problem-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    /* ===== LEARN SECTION ===== */
+    .learn {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--surface-warm) 0%, white 100%);
+    }
+
+    .learn-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .learn-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      background: white;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .learn-item:hover {
+      border-color: var(--brand);
+      box-shadow: var(--shadow);
+    }
+
+    .learn-number {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: var(--brand);
+      color: white;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .learn-item h4 {
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .learn-item p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ===== STEPS SECTION ===== */
+    .steps {
+      padding: 120px 0;
+      background: white;
+    }
+
+    .steps-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 80px;
+      left: 40px;
+      width: 2px;
+      height: calc(100% - 32px);
+      background: var(--border);
+    }
+
+    .step-number {
+      width: 80px;
+      height: 80px;
+      background: var(--brand);
+      color: white;
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 800;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .step-content p {
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .step-tip {
+      background: var(--brand-lighter);
+      border-left: 4px solid var(--brand);
+      padding: 16px 20px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 0.9375rem;
+      color: var(--text);
+    }
+
+    .step-tip strong { color: var(--brand); }
+
+    /* ===== PREVIEW SECTION ===== */
+    .preview {
+      padding: 120px 0;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: white;
+    }
+
+    .preview-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .preview-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .preview-content p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+
+    .preview-list {
+      list-style: none;
+      margin-bottom: 40px;
+    }
+
+    .preview-list li {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    .preview-list svg {
+      width: 20px;
+      height: 20px;
+      opacity: 0.9;
+      flex-shrink: 0;
+    }
+
+    .preview-visual {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .preview-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      color: var(--text);
+      box-shadow: var(--shadow-xl);
+    }
+
+    .preview-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .preview-card-avatar {
+      width: 48px;
+      height: 48px;
+      background: var(--brand-soft);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: var(--brand);
+    }
+
+    .preview-card-name { font-weight: 700; }
+    .preview-card-role {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    .preview-card-text {
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+
+    .preview-card-stars {
+      display: flex;
+      gap: 4px;
+      margin-top: 16px;
+    }
+
+    .preview-card-stars svg {
+      width: 20px;
+      height: 20px;
+      color: var(--warning);
+      fill: var(--warning);
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 120px 0;
+      background: linear-gradient(180deg, white 0%, var(--surface-warm) 100%);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+
+    .testimonial-card {
+      background: white;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      transition: var(--transition);
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--brand-soft);
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 4px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-stars svg {
+      width: 18px; height: 18px;
+      color: var(--warning);
+      fill: var(--warning);
+    }
+
+    .testimonial-text {
+      font-size: 1rem;
+      line-height: 1.75;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .testimonial-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: white;
+    }
+
+    .testimonial-name {
+      font-weight: 700;
+      font-size: 0.9375rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== FAQ SECTION ===== */
+    .faq {
+      padding: 120px 0;
+      background: white;
+    }
+
+    .faq-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      text-align: left;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    .faq-question:hover { color: var(--brand); }
+
+    .faq-question svg {
+      width: 20px; height: 20px;
+      transition: var(--transition);
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    .faq-item.active .faq-question svg { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-answer p {
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      padding: 120px 32px;
+      background: var(--surface-warm);
+      text-align: center;
+    }
+
+    .final-cta-container {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .final-cta h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .final-cta p {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    .final-cta-form {
+      display: flex;
+      gap: 12px;
+      max-width: 480px;
+      margin: 0 auto 16px;
+    }
+
+    .final-cta-form input {
+      flex: 1;
+      padding: 16px 20px;
+      border: 2px solid var(--border);
+      border-radius: var(--radius-full);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+      outline: none;
+    }
+
+    .final-cta-form input:focus {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px var(--brand-soft);
+    }
+
+    .final-cta-form input::placeholder { color: var(--text-light); }
+
+    .final-cta-note {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .final-cta-note svg {
+      width: 16px; height: 16px;
+      color: var(--success);
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 64px 32px 32px;
+      background: var(--text);
+      color: white;
+    }
+
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .footer-brand svg {
+      width: 24px; height: 24px;
+      color: var(--brand);
+    }
+
+    .footer-about {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 20px;
+      color: var(--text-light);
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--text-light);
+      text-decoration: none;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    .footer-col a:hover { color: white; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-bottom p {
+      font-size: 0.85rem;
+      color: var(--text-light);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 16px;
+    }
+
+    .footer-social a {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .footer-social a:hover {
+      background: var(--brand);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .footer-social svg { width: 16px; height: 16px; }
+
+    /* ===== ANIMATIONS ===== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== STICKY CTA (Mobile) ===== */
+    .sticky-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      background: white;
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+      z-index: 999;
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    }
+
+    .sticky-cta .btn { width: 100%; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 1024px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 60px;
+      }
+      .hero-subtitle { margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-trust { justify-content: center; }
+      .hero-visual { order: -1; max-width: 600px; margin: 0 auto; }
+      .problem-grid { grid-template-columns: repeat(2, 1fr); }
+      .learn-grid { grid-template-columns: 1fr; }
+      .preview-container { grid-template-columns: 1fr; text-align: center; }
+      .preview-list { display: inline-block; text-align: left; }
+      .preview-visual { order: -1; }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .mobile-toggle { display: block; }
+      .hero { padding: 120px 20px 60px; }
+      .hero h1 { font-size: 2.4rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; }
+      .problem-grid { grid-template-columns: 1fr; }
+      .step-item {
+        grid-template-columns: 60px 1fr;
+        gap: 20px;
+      }
+      .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 1.25rem;
+      }
+      .step-item:not(:last-child)::after {
+        left: 30px;
+        top: 60px;
+      }
+      .final-cta-form { flex-direction: column; }
+      .final-cta-form input, .final-cta-form .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .sticky-cta { display: block; }
+      body { padding-bottom: 80px; }
+    }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        LandingCraft
+      </a>
+      <div class="nav-links">
+        <a href="#problem">The Problem</a>
+        <a href="#learn">What You Will Learn</a>
+        <a href="#steps">The Steps</a>
+        <a href="#faq">FAQ</a>
+        <a href="#final-cta" class="nav-cta">Get Free Guide</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          Free Step-by-Step Guide
+        </div>
+        <h1>Build a landing page that <span class="accent">converts</span> — even if you have never designed one</h1>
+        <p class="hero-subtitle">Learn the exact framework used by top startups to create landing pages that turn visitors into customers. No design degree required.</p>
+        <div class="hero-actions">
+          <a href="#final-cta" class="btn btn-primary">
+            Get Free Guide
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          <a href="#steps" class="btn btn-secondary">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            See the Framework
+          </a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <div class="trust-avatar">JD</div>
+            <div class="trust-avatar">SM</div>
+            <div class="trust-avatar">AK</div>
+            <div class="trust-avatar">+12k</div>
+          </div>
+          <p class="trust-text"><strong>12,400+</strong> guides downloaded this year</p>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="browser-mockup">
+          <div class="browser-bar">
+            <div class="browser-dot dot-red"></div>
+            <div class="browser-dot dot-yellow"></div>
+            <div class="browser-dot dot-green"></div>
+            <div class="browser-url">yourbrand.com</div>
+          </div>
+          <div class="browser-body">
+            <div class="mock-hero">
+              <h3>Your Product Headline</h3>
+              <p>A compelling description of your value proposition</p>
+              <div class="mock-cta">Get Started</div>
+            </div>
+            <div class="mock-features">
+              <div class="mock-card">
+                <div class="mock-icon"></div>
+                <h4>Fast Setup</h4>
+                <p>Launch in hours</p>
+              </div>
+              <div class="mock-card">
+                <div class="mock-icon"></div>
+                <h4>Responsive</h4>
+                <p>Looks great everywhere</p>
+              </div>
+              <div class="mock-card">
+                <div class="mock-icon"></div>
+                <h4>Convert</h4>
+                <p>Built for results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Bar -->
+  <section class="social-bar">
+    <div class="social-bar-inner">
+      <p class="social-label">Trusted by teams at</p>
+      <div class="social-logos">
+        <span class="social-logo">Notion</span>
+        <span class="social-logo">Figma</span>
+        <span class="social-logo">Stripe</span>
+        <span class="social-logo">Linear</span>
+        <span class="social-logo">Vercel</span>
+        <span class="social-logo">Webflow</span>
+      </div>
+      <div class="social-proof-stats">
+        <div class="stat-item">
+          <div class="stat-number">12,400+</div>
+          <div class="stat-label">Guides Downloaded</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.9/5</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">87%</div>
+          <div class="stat-label">Saw Conversion Lift</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem Section -->
+  <section class="problem" id="problem">
+    <div class="section-container">
+      <div class="section-header fade-in">
+        <span class="section-tag">The Reality</span>
+        <h2 class="section-title">Most landing pages fail before they even launch</h2>
+        <p class="section-desc">You do not need to be a designer. You need a proven system. Here is why most landing pages underperform:</p>
+      </div>
+      <div class="problem-grid">
+        <div class="problem-card fade-in">
+          <div class="problem-icon">🎯</div>
+          <h3>No Clear Goal</h3>
+          <p>Trying to do everything at once — signups, downloads, purchases — confuses visitors and kills conversions. One page, one goal.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-icon">📝</div>
+          <h3>Weak Messaging</h3>
+          <p>Talking about features instead of outcomes. Visitors do not care what you do; they care what they get. Benefits beat features every time.</p>
+        </div>
+        <div class="problem-card fade-in">
+          <div class="problem-icon">📱</div>
+          <h3>Mobile Neglect</h3>
+          <p>Over 60% of traffic is mobile, yet most pages are designed desktop-first with broken mobile experiences. Design for the thumb first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What You Will Learn -->
+  <section class="learn" id="learn">
+    <div class="section-container">
+      <div class="section-header fade-in">
+        <span class="section-tag">The Curriculum</span>
+        <h2 class="section-title">What you will learn in this guide</h2>
+        <p class="section-desc">A practical, no-fluff framework you can apply to any landing page — today.</p>
+      </div>
+      <div class="learn-grid">
+        <div class="learn-item fade-in">
+          <div class="learn-number">1</div>
+          <div>
+            <h4>Write Headlines That Hook in 3 Seconds</h4>
+            <p>The exact formula for headlines that stop the scroll and communicate value instantly. Pass the 5-second test every time.</p>
+          </div>
+        </div>
+        <div class="learn-item fade-in">
+          <div class="learn-number">2</div>
+          <div>
+            <h4>Structure Content for Maximum Clarity</h4>
+            <p>How to organize information so visitors naturally flow toward your call-to-action without confusion or distraction.</p>
+          </div>
+        </div>
+        <div class="learn-item fade-in">
+          <div class="learn-number">3</div>
+          <div>
+            <h4>Design for Trust and Credibility</h4>
+            <p>Where to place social proof, testimonials, and trust signals for maximum impact. Specific numbers beat vague praise.</p>
+          </div>
+        </div>
+        <div class="learn-item fade-in">
+          <div class="learn-number">4</div>
+          <div>
+            <h4>Optimize Your Call-to-Action</h4>
+            <p>Button copy, placement, color psychology, and how to reduce friction at the point of conversion. Make clicking irresistible.</p>
+          </div>
+        </div>
+        <div class="learn-item fade-in">
+          <div class="learn-number">5</div>
+          <div>
+            <h4>Build Mobile-First Experiences</h4>
+            <p>Thumb-friendly layouts, responsive typography, and touch-optimized interactions. Design for the device people actually use.</p>
+          </div>
+        </div>
+        <div class="learn-item fade-in">
+          <div class="learn-number">6</div>
+          <div>
+            <h4>Measure and Iterate</h4>
+            <p>Which metrics actually matter, how to A/B test effectively, and when to make changes. Data beats guesswork.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Steps Section -->
+  <section class="steps" id="steps">
+    <div class="steps-container">
+      <div class="section-header fade-in">
+        <span class="section-tag">The Framework</span>
+        <h2 class="section-title">The 7-Step Landing Page Blueprint</h2>
+        <p class="section-desc">Follow this exact sequence to build pages that convert. Each step builds on the last.</p>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>Define Your Single Goal</h3>
+          <p>Before you write a single word, decide on one action you want visitors to take. One page, one goal. Whether it is email capture, trial signup, or purchase — everything on the page must serve this goal.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Write your goal on a sticky note and keep it visible while building. If any element does not directly support this goal, remove it.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>Know Your Visitor's Pain</h3>
+          <p>Map out exactly who is visiting and what problem brought them here. What did they search for? What ad did they click? What promise are they expecting you to keep? Your headline must match their mental state.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Use the exact language your customers use. Check support tickets, reviews, and sales calls to find the words they naturally use to describe their pain.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>Craft Your Hero Section</h3>
+          <p>Your hero is the first 3 seconds. It needs: a benefit-driven headline, a supporting subheadline that explains how, a primary CTA above the fold, and a visual that shows the outcome (not just the product).</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Test your headline by showing it to someone for 3 seconds, then asking them what the page is about. If they cannot answer clearly, rewrite it.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h3>Agitate the Problem, Then Present the Solution</h3>
+          <p>Do not jump straight to features. First, remind visitors of the pain they are feeling. Then introduce your solution as the bridge to their desired outcome. Benefits first, features second.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Use the "So what?" test. For every feature you list, ask "So what?" until you reach the real benefit the user cares about.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">5</div>
+        <div class="step-content">
+          <h3>Layer in Social Proof Strategically</h3>
+          <p>Testimonials, logos, case studies, and ratings build trust. Place them near points of friction — right before pricing, next to signup forms, and after your solution section. Specific numbers beat vague praise.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> "Increased revenue by 340% in 3 months" is infinitely more powerful than "Great product, highly recommend!" Always ask for specific results.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">6</div>
+        <div class="step-content">
+          <h3>Design for the Thumb</h3>
+          <p>Mobile is not an afterthought — it is the primary experience. Keep CTAs in the thumb zone (bottom third of the screen), use large tap targets (min 44px), and ensure text is readable without zooming.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Test your page on an actual phone, not just Chrome DevTools. The physical experience reveals issues simulators miss.
+          </div>
+        </div>
+      </div>
+
+      <div class="step-item fade-in">
+        <div class="step-number">7</div>
+        <div class="step-content">
+          <h3>Test, Measure, Iterate</h3>
+          <p>Launch is just the beginning. Track conversion rate, time on page, scroll depth, and heatmaps. Start with high-impact, low-effort tests: headline variations, CTA button color/copy, and form field count.</p>
+          <div class="step-tip">
+            <strong>Pro Tip:</strong> Run tests for at least 2 weeks or until you reach statistical significance. One winning test can double your conversion rate.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Preview Section -->
+  <section class="preview">
+    <div class="preview-container">
+      <div class="preview-content fade-in">
+        <h2>Get the Complete Package</h2>
+        <p>Your free download includes everything you need to build a landing page that actually converts visitors into customers.</p>
+        <ul class="preview-list">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            32-page PDF guide with real examples
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Figma template with 8 page layouts
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Pre-launch checklist (25 items)
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            Headline formula cheat sheet
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            A/B testing framework
+          </li>
+        </ul>
+        <a href="#final-cta" class="btn btn-secondary" style="color: var(--brand); border-color: white;">
+          Download Everything Free
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+      <div class="preview-visual fade-in">
+        <div class="preview-card">
+          <div class="preview-card-header">
+            <div class="preview-card-avatar">SM</div>
+            <div>
+              <div class="preview-card-name">Sarah Mitchell</div>
+              <div class="preview-card-role">Founder, GrowthLab</div>
+            </div>
+          </div>
+          <p class="preview-card-text">"I used the 7-step framework to rebuild our SaaS landing page. Our trial signups increased 3.2x in the first month. The headline formula alone was worth the download."</p>
+          <div class="preview-card-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Success Stories</span>
+        <h2 class="section-title">Built by people like you</h2>
+        <p class="section-desc">See what others have created using this framework.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"As a developer with zero design skills, I was skeptical. But the step-by-step approach made it impossible to mess up. Our landing page conversion rate went from 2.1% to 6.8%."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #4f46e5;">JC</div>
+            <div>
+              <div class="testimonial-name">James Chen</div>
+              <div class="testimonial-role">Solo Founder, DevTools Co.</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"The headline formula alone transformed how I write copy. I rewrote our entire page in 2 hours and saw a 40% increase in demo bookings the same week."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #8b5cf6;">ER</div>
+            <div>
+              <div class="testimonial-name">Emily Rodriguez</div>
+              <div class="testimonial-role">Marketing Lead, SaaS Startup</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in">
+          <div class="testimonial-stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <p class="testimonial-text">"I used the Figma template and had a professional-looking landing page ready for our product launch in under a day. The mobile-first approach was a game-changer."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar" style="background: #10b981;">MK</div>
+            <div>
+              <div class="testimonial-name">Michael Kim</div>
+              <div class="testimonial-role">Product Designer, Fintech</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq" id="faq">
+    <div class="faq-container">
+      <div class="section-header fade-in">
+        <span class="section-tag">Questions</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Do I need any design or coding experience?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Not at all. This guide is built for beginners. We explain every term (like "CTA" and "above the fold") when it is first used, and the Figma template requires zero coding. If you can use Google Docs, you can follow this guide.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What tools do I need?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Just a free Figma account for the template, and any landing page builder (Webflow, Framer, Carrd, or even WordPress). The guide itself is a PDF you can read on any device. No paid software required to get started.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          How long does it take to build a landing page with this guide?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Most people complete their first draft in 4-6 hours. The guide is designed to be actionable — you build as you read. With the Figma template, you can have a polished, responsive page ready in a single day.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is this really free? What is the catch?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Completely free, no catch. We believe great landing pages should be accessible to everyone. We may occasionally email you with new resources or tips, but you can unsubscribe anytime with one click.</p>
+        </div>
+      </div>
+
+      <div class="faq-item fade-in">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I use this for client work or commercial projects?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+        </button>
+        <div class="faq-answer">
+          <p>Absolutely. The framework, template, and checklist are yours to use for personal projects, client work, or commercial products. No attribution required. We only ask that you do not resell the guide itself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="final-cta" id="final-cta">
+    <div class="final-cta-container">
+      <h2>Ready to build your first high-converting landing page?</h2>
+      <p>Join 12,400+ creators who learned the framework. Get the free guide, template, and checklist delivered to your inbox.</p>
+      <form class="final-cta-form" onsubmit="event.preventDefault(); alert('Thanks! Check your inbox for the guide.');">
+        <input type="email" placeholder="Enter your work email" required>
+        <button type="submit" class="btn btn-primary">
+          Get Free Guide
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </form>
+      <p class="final-cta-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+          <polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        No spam. Unsubscribe anytime. Your email is never shared.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            LandingCraft
+          </div>
+          <p class="footer-about">Teaching people how to build landing pages that convert. No code, no design degree — just a proven framework that works.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Learn</h4>
+          <a href="#steps">The Framework</a>
+          <a href="#learn">What You Will Learn</a>
+          <a href="#faq">FAQ</a>
+          <a href="#">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <a href="#">Figma Template</a>
+          <a href="#">Checklist</a>
+          <a href="#">Examples</a>
+          <a href="#">Community</a>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>2026 LandingCraft. All rights reserved.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Twitter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky Mobile CTA -->
+  <div class="sticky-cta">
+    <a href="#final-cta" class="btn btn-primary">Get Free Guide</a>
+  </div>
+
+  <script>
+    // FAQ Toggle
+    function toggleFaq(button) {
+      const item = button.parentElement;
+      const isActive = item.classList.contains('active');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+      });
+
+      // Open clicked if it was not active
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    // Scroll reveal animation
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+      observer.observe(el);
+    });
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
+
+    // Navbar background on scroll
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.style.background = 'rgba(255, 255, 255, 0.95)';
+        nav.style.boxShadow = '0 1px 3px rgba(0,0,0,0.05)';
+      } else {
+        nav.style.background = 'rgba(255, 255, 255, 0.8)';
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
