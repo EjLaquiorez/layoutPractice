@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing Page Anatomy — HTML Structure Visualizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --bg-elevated: #1e293b;
+      --bg-card: #334155;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #4f46e5;
+      --accent-soft: #6366f1;
+      --accent-glow: rgba(79, 70, 229, 0.3);
+      --tag: #10b981;
+      --tag-soft: #34d399;
+      --border: #334155;
+      --radius: 12px;
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      padding: 32px 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(20px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .header h1 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .legend-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 3px;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 24px;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 40px;
+    }
+
+    @media (max-width: 1024px) {
+      .container { grid-template-columns: 1fr; }
+    }
+
+    /* Tree View */
+    .tree-panel {
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .tree-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .tree-header h2 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .tree-body {
+      padding: 16px 0;
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+
+    .tree-body::-webkit-scrollbar { width: 6px; }
+    .tree-body::-webkit-scrollbar-track { background: transparent; }
+    .tree-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+    /* Tree Node */
+    .node {
+      position: relative;
+      padding-left: 24px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .node:hover {
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    .node.active {
+      background: rgba(79, 70, 229, 0.1);
+    }
+
+    .node-line {
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .node-content {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px 10px 8px;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+
+    .node-toggle {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dim);
+      font-size: 0.7rem;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .node.collapsed .node-toggle { transform: rotate(-90deg); }
+    .node.collapsed .node-children { display: none; }
+
+    .node-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .tag-nav { background: #1e3a5f; color: #60a5fa; }
+    .tag-section { background: #3f1e5f; color: #c084fc; }
+    .tag-div { background: #1e3f2f; color: #34d399; }
+    .tag-h1 { background: #5f1e1e; color: #f87171; }
+    .tag-p { background: #5f4e1e; color: #fbbf24; }
+    .tag-a { background: #1e2f5f; color: #818cf8; }
+    .tag-form { background: #5f3f1e; color: #fb923c; }
+    .tag-ul { background: #3f3f1e; color: #a3e635; }
+    .tag-li { background: #2f3f1e; color: #84cc16; }
+    .tag-button { background: #5f1e3f; color: #f472b6; }
+    .tag-input { background: #3f1e3f; color: #e879f9; }
+    .tag-footer { background: #1e1e3f; color: #a78bfa; }
+    .tag-svg { background: #1e3f3f; color: #22d3ee; }
+    .tag-script { background: #3f3f3f; color: #9ca3af; }
+    .tag-span { background: #3f3f1e; color: #d4d4d8; }
+
+    .node-class {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      margin-left: 4px;
+    }
+
+    .node-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      margin-left: auto;
+      padding-left: 12px;
+    }
+
+    .node-children {
+      position: relative;
+    }
+
+    .node-children::before {
+      content: '';
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    /* Detail Panel */
+    .detail-panel {
+      position: sticky;
+      top: 120px;
+      height: fit-content;
+    }
+
+    .detail-card {
+      background: var(--bg-elevated);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .detail-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-header h3 {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .detail-body {
+      padding: 24px;
+    }
+
+    .detail-tag {
+      display: inline-block;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.2rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .detail-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .detail-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .detail-meta {
+      display: grid;
+      gap: 12px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      min-width: 70px;
+      padding-top: 2px;
+    }
+
+    .meta-value {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .meta-value code {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg-card);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: var(--accent-soft);
+    }
+
+    /* Code Preview */
+    .code-preview {
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 16px;
+      margin-top: 20px;
+      overflow-x: auto;
+    }
+
+    .code-preview pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    .code-tag { color: #c084fc; }
+    .code-attr { color: #60a5fa; }
+    .code-string { color: #34d399; }
+    .code-comment { color: var(--text-dim); font-style: italic; }
+
+    /* Section Breakdown */
+    .section-breakdown {
+      margin-top: 60px;
+      padding-top: 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-breakdown h2 {
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 32px;
+      text-align: center;
+    }
+
+    .breakdown-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 768px) {
+      .breakdown-grid { grid-template-columns: 1fr; }
+    }
+
+    .breakdown-card {
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: var(--transition);
+    }
+
+    .breakdown-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .breakdown-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .breakdown-card h3 .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .breakdown-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .breakdown-card .structure-list {
+      list-style: none;
+      margin-top: 16px;
+    }
+
+    .breakdown-card .structure-list li {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .breakdown-card .structure-list li:last-child { border-bottom: none; }
+
+    .structure-list .indent { color: var(--text-dim); opacity: 0.5; }
+
+    /* Interactive highlight */
+    .highlight-box {
+      position: fixed;
+      pointer-events: none;
+      border: 2px solid var(--accent);
+      border-radius: 8px;
+      background: var(--accent-glow);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .highlight-box.visible { opacity: 1; }
+  </style>
+<base target="_blank">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-inner">
+      <div>
+        <h1>Landing Page Anatomy</h1>
+        <p>Interactive HTML structure visualizer</p>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-dot tag-nav"></div>
+          Navigation
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot tag-section"></div>
+          Section
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot tag-div"></div>
+          Container / Div
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot tag-h1"></div>
+          Heading
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot tag-a"></div>
+          Link / Button
+        </div>
+        <div class="legend-item">
+          <div class="legend-dot tag-form"></div>
+          Form
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Tree View -->
+    <div class="tree-panel">
+      <div class="tree-header">
+        <h2>HTML Element Tree</h2>
+        <span style="color: var(--text-dim); font-size: 0.8rem;">Click to expand/collapse</span>
+      </div>
+      <div class="tree-body" id="treeBody">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+
+    <!-- Detail Panel -->
+    <div class="detail-panel">
+      <div class="detail-card" id="detailCard">
+        <div class="detail-header">
+          <h3>Element Details</h3>
+        </div>
+        <div class="detail-body" id="detailBody">
+          <p style="color: var(--text-dim); text-align: center; padding: 20px 0;">
+            Click any element in the tree to see its details
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section Breakdown -->
+  <div class="container" style="grid-template-columns: 1fr; margin-top: 20px;">
+    <div class="section-breakdown">
+      <h2>Section-by-Section Breakdown</h2>
+      <div class="breakdown-grid" id="breakdownGrid">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Full page structure data
+    const pageStructure = {
+      tag: 'html',
+      class: '',
+      desc: 'Root element',
+      purpose: 'The document root that wraps all content',
+      children: [
+        {
+          tag: 'head',
+          class: '',
+          desc: 'Document metadata',
+          purpose: 'Contains meta tags, title, fonts, and CSS styles (not visible on page)',
+          code: `<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Create a Landing Page...</title>
+<link href="https://fonts.googleapis.com/...">`,
+          children: []
+        },
+        {
+          tag: 'body',
+          class: '',
+          desc: 'Visible page content',
+          purpose: 'Contains every element the user sees and interacts with',
+          children: [
+            {
+              tag: 'nav',
+              class: '.nav',
+              desc: 'Fixed navigation bar',
+              purpose: 'Sticky header with glassmorphism blur. Contains logo, links, and CTA.',
+              why: 'Semantic <nav> tells screen readers this is navigation. Fixed positioning keeps it visible while scrolling.',
+              code: `<nav class="nav">
+  <div class="nav-container">
+    <a href="#" class="nav-brand">...</a>
+    <div class="nav-links">...</div>
+  </div>
+</nav>`,
+              children: [
+                {
+                  tag: 'div',
+                  class: '.nav-container',
+                  desc: 'Navigation wrapper',
+                  purpose: 'Max-width container that centers content and adds padding',
+                  why: 'Flexbox layout with justify-content: space-between separates logo from links',
+                  children: [
+                    {
+                      tag: 'a',
+                      class: '.nav-brand',
+                      desc: 'Logo + brand name',
+                      purpose: 'Home link with SVG icon + text "LandingCraft"',
+                      why: '<a> makes it clickable. SVG icon scales without blurring.',
+                      children: [
+                        { tag: 'svg', class: '', desc: 'House icon', purpose: 'Brand logo icon', children: [] }
+                      ]
+                    },
+                    {
+                      tag: 'div',
+                      class: '.nav-links',
+                      desc: 'Navigation links container',
+                      purpose: 'Holds all menu items in a flex row',
+                      why: 'Flexbox gap creates consistent spacing between links',
+                      children: [
+                        { tag: 'a', class: '', desc: '#problem', purpose: 'Anchor link to Problem section', why: 'href="#problem" scrolls to that section ID' },
+                        { tag: 'a', class: '', desc: '#learn', purpose: 'Anchor link to Learn section', why: 'Smooth scroll behavior in CSS' },
+                        { tag: 'a', class: '', desc: '#steps', purpose: 'Anchor link to Steps section', why: 'All nav links use scroll-padding-top for offset' },
+                        { tag: 'a', class: '', desc: '#faq', purpose: 'Anchor link to FAQ section', why: 'IDs must match exactly with target sections' },
+                        { tag: 'a', class: '.nav-cta', desc: 'Get Free Guide', purpose: 'Primary conversion button in nav', why: 'High-contrast styling draws attention. Fixed position = always visible CTA.' }
+                      ]
+                    },
+                    {
+                      tag: 'button',
+                      class: '.mobile-toggle',
+                      desc: 'Hamburger menu button',
+                      purpose: 'Shows/hides nav on mobile screens',
+                      why: 'Hidden on desktop (display: none), visible on mobile. aria-label for accessibility.',
+                      children: [
+                        { tag: 'svg', class: '', desc: '3-line menu icon', purpose: 'Hamburger icon', why: 'SVG strokes animate easily if needed' }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              tag: 'section',
+              class: '.hero',
+              desc: 'Hero section',
+              purpose: 'First impression area. Above the fold. Contains headline, subtext, CTA, and visual.',
+              why: '<section> is semantic. Two-column grid (text left, visual right) on desktop. Stacks on mobile.',
+              code: `<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">...</div>
+    <div class="hero-visual">...</div>
+  </div>
+</section>`,
+              children: [
+                {
+                  tag: 'div',
+                  class: '.hero-container',
+                  desc: 'Hero wrapper',
+                  purpose: 'CSS Grid: 1.1fr text + 0.9fr visual. Max-width 1280px.',
+                  why: 'Grid gap: 80px creates breathing room. Align-items: center vertically centers both columns.',
+                  children: [
+                    {
+                      tag: 'div',
+                      class: '.hero-content',
+                      desc: 'Text content column',
+                      purpose: 'All text elements: badge, headline, subtitle, buttons, trust bar',
+                      why: 'Flexbox column layout. Max-width on subtitle prevents overly long lines.',
+                      children: [
+                        {
+                          tag: 'div',
+                          class: '.hero-badge',
+                          desc: 'Trust badge',
+                          purpose: 'Social proof element: "Free Step-by-Step Guide" with checkmark icon',
+                          why: 'Inline-flex with gap aligns icon + text. Border-radius: 999px = pill shape.',
+                          children: [
+                            { tag: 'svg', class: '', desc: 'Checkmark icon', purpose: 'Visual trust indicator', why: 'Green checkmark = positive association' }
+                          ]
+                        },
+                        {
+                          tag: 'h1',
+                          class: '',
+                          desc: 'Main headline',
+                          purpose: 'Page title: "Build a landing page that converts..."',
+                          why: 'Only one <h1> per page for SEO. .accent span with ::after pseudo-element creates the highlight underline effect.',
+                          children: [
+                            { tag: 'span', class: '.accent', desc: 'Highlighted word "converts"', purpose: 'Visual emphasis with underline effect', why: '::after pseudo-element creates the colored underline behind the text' }
+                          ]
+                        },
+                        {
+                          tag: 'p',
+                          class: '.hero-subtitle',
+                          desc: 'Supporting description',
+                          purpose: 'Explains the value proposition in one sentence',
+                          why: 'Slightly larger font (1.15rem) and muted color for hierarchy. Max-width ensures readability.'
+                        },
+                        {
+                          tag: 'div',
+                          class: '.hero-actions',
+                          desc: 'CTA button group',
+                          purpose: 'Two buttons: primary (Get Free Guide) + secondary (See Framework)',
+                          why: 'Flexbox wrap allows buttons to stack on narrow screens. Gap: 14px consistent spacing.',
+                          children: [
+                            {
+                              tag: 'a',
+                              class: '.btn .btn-primary',
+                              desc: 'Primary CTA button',
+                              purpose: 'Main conversion action: scrolls to email form',
+                              why: '<a> not <button> because it navigates to #final-cta. Box-shadow creates depth.',
+                              children: [
+                                { tag: 'svg', class: '', desc: 'Arrow icon', purpose: 'Indicates forward action', why: 'Right-pointing arrow = progression' }
+                              ]
+                            },
+                            {
+                              tag: 'a',
+                              class: '.btn .btn-secondary',
+                              desc: 'Secondary button',
+                              purpose: 'Alternative action: scrolls to steps section',
+                              why: 'Ghost style (white bg + border) = lower priority than primary. Play icon suggests video/demo.'
+                            }
+                          ]
+                        },
+                        {
+                          tag: 'div',
+                          class: '.hero-trust',
+                          desc: 'Social proof bar',
+                          purpose: 'Avatar stack + text showing user count',
+                          why: 'Overlapping avatars (margin-left: -10px) create a "crowd" effect. Colored initials = no images needed.',
+                          children: [
+                            {
+                              tag: 'div',
+                              class: '.trust-avatars',
+                              desc: 'Avatar stack',
+                              purpose: '4 overlapping circular avatars with initials',
+                              why: 'Negative margin creates overlap. Border: 2px solid white separates them.',
+                              children: [
+                                { tag: 'div', class: '.trust-avatar', desc: 'JD', purpose: 'Avatar 1', why: 'Background color differentiates each' },
+                                { tag: 'div', class: '.trust-avatar', desc: 'SM', purpose: 'Avatar 2', why: 'Z-index naturally stacks by DOM order' },
+                                { tag: 'div', class: '.trust-avatar', desc: 'AK', purpose: 'Avatar 3', why: 'No images = faster loading, no broken links' },
+                                { tag: 'div', class: '.trust-avatar', desc: '+12k', purpose: 'Count indicator', why: 'Shows scale without showing all avatars' }
+                              ]
+                            },
+                            {
+                              tag: 'p',
+                              class: '.trust-text',
+                              desc: 'Trust text',
+                              purpose: '"12,400+ guides downloaded this year"',
+                              why: 'Specific number (not "thousands") builds credibility. <strong> for emphasis.'
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      tag: 'div',
+                      class: '.hero-visual',
+                      desc: 'Visual column',
+                      purpose: 'Browser mockup showing a landing page preview',
+                      why: 'Order: -1 on mobile moves visual above text. 3D perspective tilt adds depth.',
+                      children: [
+                        {
+                          tag: 'div',
+                          class: '.browser-mockup',
+                          desc: 'Browser window mockup',
+                          purpose: 'Simulates a real browser window with traffic light dots',
+                          why: 'CSS perspective + rotateY creates the 3D tilt. Hover resets to flat.',
+                          children: [
+                            {
+                              tag: 'div',
+                              class: '.browser-bar',
+                              desc: 'Browser chrome',
+                              purpose: 'Traffic lights (red/yellow/green) + URL bar',
+                              why: 'Familiar visual pattern = instant recognition. Flexbox aligns items.',
+                              children: [
+                                { tag: 'div', class: '.browser-dot .dot-red', desc: 'Close', purpose: 'Red traffic light', why: 'CSS border-radius: 50% = circle' },
+                                { tag: 'div', class: '.browser-dot .dot-yellow', desc: 'Minimize', purpose: 'Yellow traffic light', why: 'Pure CSS, no images' },
+                                { tag: 'div', class: '.browser-dot .dot-green', desc: 'Maximize', purpose: 'Green traffic light', why: 'Consistent 12px size' },
+                                { tag: 'div', class: '.browser-url', desc: 'yourbrand.com', purpose: 'Fake URL bar', why: 'Text-align: center. Border creates input-like appearance.' }
+                              ]
+                            },
+                            {
+                              tag: 'div',
+                              class: '.browser-body',
+                              desc: 'Mockup content area',
+                              purpose: 'Simulated landing page inside the browser',
+                              why: 'Padding: 32px creates internal spacing.',
+                              children: [
+                                {
+                                  tag: 'div',
+                                  class: '.mock-hero',
+                                  desc: 'Mock hero section',
+                                  purpose: 'Gradient background with headline + CTA',
+                                  why: 'Linear-gradient creates visual interest. Border-radius matches parent.',
+                                  children: [
+                                    { tag: 'h3', class: '', desc: 'Your Product Headline', purpose: 'Mock headline', why: 'Smaller than real h1 for scale' },
+                                    { tag: 'p', class: '', desc: 'Value proposition text', purpose: 'Mock subtitle', why: 'Muted color for hierarchy' },
+                                    { tag: 'div', class: '.mock-cta', desc: 'Get Started', purpose: 'Mock button', why: 'Solid background = fake button' }
+                                  ]
+                                },
+                                {
+                                  tag: 'div',
+                                  class: '.mock-features',
+                                  desc: 'Mock feature grid',
+                                  purpose: '3-column grid of feature cards',
+                                  why: 'Grid-template-columns: repeat(3, 1fr). Gap: 12px.',
+                                  children: [
+                                    {
+                                      tag: 'div',
+                                      class: '.mock-card',
+                                      desc: 'Feature card 1',
+                                      purpose: 'Fast Setup',
+                                      why: 'Each card has icon + h4 + p. Text-align: center.',
+                                      children: [
+                                        { tag: 'div', class: '.mock-icon', desc: 'Icon placeholder', purpose: 'Visual element', why: 'Empty div with background color' },
+                                        { tag: 'h4', class: '', desc: 'Fast Setup', purpose: 'Feature title', why: 'Small font for mock scale' },
+                                        { tag: 'p', class: '', desc: 'Launch in hours', purpose: 'Feature description', why: 'Even smaller text' }
+                                      ]
+                                    },
+                                    { tag: 'div', class: '.mock-card', desc: 'Feature card 2', purpose: 'Responsive', children: [] },
+                                    { tag: 'div', class: '.mock-card', desc: 'Feature card 3', purpose: 'Convert', children: [] }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              tag: 'section',
+              class: '.social-bar',
+              desc: 'Social proof bar',
+              purpose: 'Company logos + key statistics',
+              why: 'White background separates from hero above and sections below.',
+              code: `<section class="social-bar">
+  <div class="social-bar-inner">
+    <p class="social-label">Trusted by teams at</p>
+    <div class="social-logos">...</div>
+    <div class="social-proof-stats">...</div>
+  </div>
+</section>`,
+              children: [
+                {
+                  tag: 'div',
+                  class: '.social-bar-inner',
+                  desc: 'Centered content wrapper',
+                  purpose: 'Max-width + text-align: center',
+                  why: 'All children centered for visual balance.',
+                  children: [
+                    {
+                      tag: 'p',
+                      class: '.social-label',
+                      desc: 'Section label',
+                      purpose: '"Trusted by teams at"',
+                      why: 'Uppercase + letter-spacing: 0.08em = label style. Small font = supporting, not competing.'
+                    },
+                    {
+                      tag: 'div',
+                      class: '.social-logos',
+                      desc: 'Logo row',
+                      purpose: '6 company names in a row',
+                      why: 'Flexbox with gap: 48px. Opacity: 0.45 = subtle, not distracting.',
+                      children: [
+                        { tag: 'span', class: '.social-logo', desc: 'Notion', purpose: 'Logo placeholder', why: 'Text-based logos = no image loading' },
+                        { tag: 'span', class: '.social-logo', desc: 'Figma', purpose: 'Logo placeholder', why: 'Bold weight + letter-spacing = brand feel' },
+                        { tag: 'span', class: '.social-logo', desc: 'Stripe', purpose: 'Logo placeholder', children: [] },
+                        { tag: 'span', class: '.social-logo', desc: 'Linear', purpose: 'Logo placeholder', children: [] },
+                        { tag: 'span', class: '.social-logo', desc: 'Vercel', purpose: 'Logo placeholder', children: [] },
+                        { tag: 'span', class: '.social-logo', desc: 'Webflow', purpose: 'Logo placeholder', children: [] }
+                      ]
+                    },
+                    {
+                      tag: 'div',
+                      class: '.social-proof-stats',
+                      desc: 'Statistics row',
+                      purpose: '3 key metrics: downloads, rating, conversion lift',
+                      why: 'Flexbox with gap: 64px. Margin-top: 48px separates from logos.',
+                      children: [
+                        {
+                          tag: 'div',
+                          class: '.stat-item',
+                          desc: 'Stat 1',
+                          purpose: '12,400+ guides downloaded',
+                          why: 'Large number (2.5rem) + small label = data hierarchy.',
+                          children: [
+                            { tag: 'div', class: '.stat-number', desc: '12,400+', purpose: 'Big number', why: 'Font-weight: 800. Color: brand.' },
+                            { tag: 'div', class: '.stat-label', desc: 'Guides Downloaded', purpose: 'Label', why: 'Muted color, smaller font.' }
+                          ]
+                        },
+                        { tag: 'div', class: '.stat-item', desc: 'Stat 2', purpose: '4.9/5 rating', children: [] },
+                        { tag: 'div', class: '.stat-item', desc: 'Stat 3', purpose: '87% conversion lift', children: [] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              tag: 'section',
+              class: '.problem',
+              desc: 'Problem section',
+              purpose: 'Agitates pain points before offering solution',
+              why: 'ID: #problem matches nav href. White background.',
+              code: `<section class="problem" id="problem">
+  <div class="section-container">
+    <div class="section-header">...</div>
+    <div class="problem-grid">...</div>
+  </div>
+</section>`,
+              children: [
+                {
+                  tag: 'div',
+                  class: '.section-container',
+                  desc: 'Standard container',
+                  purpose: 'Max-width: 1280px + padding',
+                  why: 'Reusable across all sections.',
+                  children: [
+                    {
+                      tag: 'div',
+                      class: '.section-header',
+                      desc: 'Section header',
+                      purpose: 'Tag + title + description (centered)',
+                      why: 'Max-width: 640px + margin: auto = centered column.',
+                      children: [
+                        { tag: 'span', class: '.section-tag', desc: 'The Reality', purpose: 'Category label', why: 'Pill shape. Brand color.' },
+                        { tag: 'h2', class: '.section-title', desc: 'Main section heading', purpose: '"Most landing pages fail..."', why: 'Clamp() for responsive font size.' },
+                        { tag: 'p', class: '.section-desc', desc: 'Section description', purpose: 'Supporting text', why: 'Muted color. 1.1rem size.' }
+                      ]
+                    },
+                    {
+                      tag: 'div',
+                      class: '.problem-grid',
+                      desc: '3-column card grid',
+                      purpose: 'Cards: No Clear Goal, Weak Messaging, Mobile Neglect',
+                      why: 'Grid-template-columns: repeat(3, 1fr). Gap: 28px.',
+                      children: [
+                        {
+                          tag: 'div',
+                          class: '.problem-card',
+                          desc: 'Problem card 1',
+                          purpose: 'No Clear Goal',
+                          why: 'Hover: border-color change + translateY(-6px) + shadow. ::before gradient line animates in.',
+                          children: [
+                            { tag: 'div', class: '.problem-icon', desc: '🎯', purpose: 'Emoji icon', why: 'No image needed. Instant recognition.' },
+                            { tag: 'h3', class: '', desc: 'No Clear Goal', purpose: 'Card title', why: 'Bold. Clear hierarchy.' },
+                            { tag: 'p', class: '', desc: 'Description text', purpose: 'Explanation', why: 'Muted color. Comfortable line-height.' }
+                          ]
+                        },
+                        { tag: 'div', class: '.problem-card', desc: 'Problem card 2', purpose: 'Weak Messaging', children: [] },
+                        { tag: 'div', class: '.problem-card', desc: 'Problem card 3', purpose: 'Mobile Neglect', children: [] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              tag: 'section',
+              class: '.learn',
+              desc: 'What You Will Learn',
+              purpose: '6 learning outcomes in a 2-column grid',
+              why: 'ID: #learn. Gradient background (warm to white).',
+              code: `<section class="learn" id="learn">
+  <div class="section-container">
+    <div class="section-header">...</div>
+    <div class="learn-grid">...</div>
+  </div>
+</section>`,
+              children: [
+                {
+                  tag: 'div',
+                  class: '.section-container',
+                  desc: 'Container',
+                  purpose: 'Standard wrapper',
+                  children: [
+                    { tag: 'div', class: '.section-header', desc: 'Header', purpose: 'Tag + title + desc', children: [] },
+                    {
+                      tag: 'div',
+                      class: '.learn-grid',
+                      desc: '2-column grid',
+                      purpose: '6 learning items',
+                      why: 'Grid-template-columns: repeat(2, 1fr). Max-width: 900px = not too wide.',
+                      children: [
+                        {
+                          tag: 'div',
+                          class: '.learn-item',
+                          desc: 'Learn item 1',
+                          purpose: 'Write Headlines That Hook',
+                          why: 'Flexbox row: number + text. Hover: border-color change to brand.',
+                          children: [
+                            { tag: 'div', class: '.learn-number', desc: '1', purpose: 'Number badge', why: 'Fixed width/height. Brand background. White text.' },
+                            {
+                              tag: 'div',
+                              desc: 'Text wrapper',
+                              purpose: 'h4 + p',
+                              children: [
+                                { tag: 'h4', class: '', desc: 'Write Headlines...', purpose: 'Skill title', why: 'Bold. Slightly larger.' },
+                                { tag: 'p', class: '', desc: 'Description', purpose: 'What you will learn', why: 'Muted. Smaller.' }
+                              ]
+                            }
+                          ]
+                        },
+                        { tag: 'div', class: '.learn-item', desc: 'Learn item 2', purpose: 'Structure Content', children: [] },
+                        { tag: 'div', class: '.learn-item', desc: 'Learn item 3', purpose: 'Design for Trust', children: [] },
+                        { tag: 'div', class: '.learn-item', desc: 'Learn item 4', purpose: 'Optimize CTA', children: [] },
+                        { tag: 'div', class: '.learn-item', desc: 'Learn item 5', purpose: 'Mobile-First', children: [] },
+                        { tag: 'div', class: '.learn-item', desc: 'Learn item 6', purpose: 'Measure & Iterate', children: [] }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+
+    // Render tree recursively
+    function renderTree(node, depth = 0) {
+      const hasChildren = node.children && node.children.length > 0;
+      const tagClass = `tag-${node.tag}`;
+
+      let html = `
+        <div class="node ${hasChildren ? '' : 'collapsed'}" data-tag="${node.tag}" data-class="${node.class || ''}" onclick="selectNode(this, event)">
+          <div class="node-line" style="left: ${12 + depth * 24}px;"></div>
+          <div class="node-content" style="padding-left: ${8 + depth * 24}px;">
+            ${hasChildren ? `<span class="node-toggle" onclick="toggleNode(this, event)">▼</span>` : '<span class="node-toggle" style="opacity:0;">▸</span>'}
+            <span class="node-tag ${tagClass}">&lt;${node.tag}&gt;</span>
+            ${node.class ? `<span class="node-class">${node.class}</span>` : ''}
+            ${node.desc ? `<span class="node-desc">${node.desc}</span>` : ''}
+          </div>
+          ${hasChildren ? `
+            <div class="node-children">
+              ${node.children.map(child => renderTree(child, depth + 1)).join('')}
+            </div>
+          ` : ''}
+        </div>
+      `;
+      return html;
+    }
+
+    // Toggle node collapse
+    function toggleNode(toggle, event) {
+      event.stopPropagation();
+      const node = toggle.closest('.node');
+      node.classList.toggle('collapsed');
+    }
+
+    // Select node and show details
+    function selectNode(nodeEl, event) {
+      if (event.target.classList.contains('node-toggle')) return;
+
+      document.querySelectorAll('.node').forEach(n => n.classList.remove('active'));
+      nodeEl.classList.add('active');
+
+      const tag = nodeEl.dataset.tag;
+      const className = nodeEl.dataset.class;
+      const nodeData = findNodeData(pageStructure, tag, className);
+
+      if (nodeData) {
+        showDetail(nodeData);
+      }
+    }
+
+    // Find node in data structure
+    function findNodeData(root, tag, className) {
+      if (root.tag === tag && (root.class || '') === (className || '')) return root;
+      if (root.children) {
+        for (const child of root.children) {
+          const found = findNodeData(child, tag, className);
+          if (found) return found;
+        }
+      }
+      return null;
+    }
+
+    // Show detail panel
+    function showDetail(node) {
+      const tagClass = `tag-${node.tag}`;
+      const detailBody = document.getElementById('detailBody');
+
+      detailBody.innerHTML = `
+        <span class="detail-tag ${tagClass}">&lt;${node.tag}&gt;</span>
+        <div class="detail-title">${node.desc || node.tag}</div>
+        <div class="detail-desc">${node.purpose || ''}</div>
+        <div class="detail-meta">
+          ${node.why ? `
+            <div class="meta-item">
+              <span class="meta-label">Why</span>
+              <span class="meta-value">${node.why}</span>
+            </div>
+          ` : ''}
+          ${node.class ? `
+            <div class="meta-item">
+              <span class="meta-label">Class</span>
+              <span class="meta-value"><code>${node.class}</code></span>
+            </div>
+          ` : ''}
+          <div class="meta-item">
+            <span class="meta-label">Type</span>
+            <span class="meta-value">${getElementType(node.tag)}</span>
+          </div>
+        </div>
+        ${node.code ? `
+          <div class="code-preview">
+            <pre>${highlightCode(node.code)}</pre>
+          </div>
+        ` : ''}
+      `;
+    }
+
+    function getElementType(tag) {
+      const types = {
+        'nav': 'Semantic — Navigation landmark',
+        'section': 'Semantic — Thematic grouping',
+        'div': 'Generic — Layout container',
+        'h1': 'Semantic — Page heading (level 1)',
+        'h2': 'Semantic — Section heading (level 2)',
+        'h3': 'Semantic — Sub-heading (level 3)',
+        'h4': 'Semantic — Sub-heading (level 4)',
+        'p': 'Semantic — Paragraph text',
+        'a': 'Semantic — Anchor link',
+        'button': 'Semantic — Interactive button',
+        'input': 'Semantic — Form input',
+        'form': 'Semantic — Form container',
+        'ul': 'Semantic — Unordered list',
+        'li': 'Semantic — List item',
+        'span': 'Generic — Inline container',
+        'svg': 'Embedded — Scalable vector graphic',
+        'script': 'Embedded — JavaScript',
+        'html': 'Root — Document root',
+        'head': 'Metadata — Document head',
+        'body': 'Root — Document body',
+        'footer': 'Semantic — Footer landmark'
+      };
+      return types[tag] || 'HTML Element';
+    }
+
+    function highlightCode(code) {
+      return code
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/(&lt;\/?)([\w-]+)/g, '<span class="code-tag">$1$2</span>')
+        .replace(/(\s)([\w-]+)(=)/g, '$1<span class="code-attr">$2</span>$3')
+        .replace(/"([^"]*)"/g, '<span class="code-string">"$1"</span>')
+        .replace(/(&lt;!--.*?--&gt;)/g, '<span class="code-comment">$1</span>');
+    }
+
+    // Render section breakdown cards
+    function renderBreakdown() {
+      const sections = [
+        {
+          name: 'Navigation',
+          tag: 'nav',
+          desc: 'Fixed header that stays visible while scrolling. Uses glassmorphism (backdrop-filter: blur) for a modern frosted effect.',
+          structure: [
+            'nav.nav (fixed, z-index: 1000)',
+            '  └─ div.nav-container (flex, max-width: 1280px)',
+            '      ├─ a.nav-brand (logo + text)',
+            '      ├─ div.nav-links (flex, gap: 8px)',
+            '      │   └─ a links (anchor to sections)',
+            '      │   └─ a.nav-cta (highlighted button)',
+            '      └─ button.mobile-toggle (hamburger, hidden on desktop)'
+          ]
+        },
+        {
+          name: 'Hero Section',
+          tag: 'section',
+          desc: 'Two-column grid layout. Left: text content with staggered animations. Right: 3D browser mockup. Order reverses on mobile.',
+          structure: [
+            'section.hero (padding-top: 160px for nav clearance)',
+            '  └─ div.hero-container (grid: 1.1fr 0.9fr)',
+            '      ├─ div.hero-content (text column)',
+            '      │   ├─ div.hero-badge (pill with icon)',
+            '      │   ├─ h1 (headline with .accent span)',
+            '      │   ├─ p.hero-subtitle (muted, max-width)',
+            '      │   ├─ div.hero-actions (flex, two buttons)',
+            '      │   └─ div.hero-trust (avatars + text)',
+            '      └─ div.hero-visual (visual column)',
+            '          └─ div.browser-mockup (3D perspective)',
+            '              ├─ div.browser-bar (traffic lights)',
+            '              └─ div.browser-body (mock content)'
+          ]
+        },
+        {
+          name: 'Social Proof',
+          tag: 'section',
+          desc: 'Centered content bar with company logos and statistics. White background creates visual separation between sections.',
+          structure: [
+            'section.social-bar (white bg, border top/bottom)',
+            '  └─ div.social-bar-inner (centered)',
+            '      ├─ p.social-label (uppercase, small)',
+            '      ├─ div.social-logos (flex, 6 items)',
+            '      │   └─ span.social-logo x6 (text logos)',
+            '      └─ div.social-proof-stats (flex, 3 stats)',
+            '          └─ div.stat-item x3 (number + label)'
+          ]
+        },
+        {
+          name: 'Problem Section',
+          tag: 'section',
+          desc: 'Three cards explaining why landing pages fail. Each card has a top gradient line that animates on hover.',
+          structure: [
+            'section.problem#problem (white bg)',
+            '  └─ div.section-container (max-width: 1280px)',
+            '      ├─ div.section-header (centered)',
+            '      │   ├─ span.section-tag (pill label)',
+            '      │   ├─ h2.section-title (clamp font-size)',
+            '      │   └─ p.section-desc (muted)',
+            '      └─ div.problem-grid (3 columns)',
+            '          └─ div.problem-card x3',
+            '              ├─ div.problem-icon (emoji)',
+            '              ├─ h3 (card title)',
+            '              └─ p (description)'
+          ]
+        },
+        {
+          name: 'Learn Section',
+          tag: 'section',
+          desc: 'Six learning outcomes in a 2-column grid. Each item has a numbered badge and hover border effect.',
+          structure: [
+            'section.learn#learn (gradient bg)',
+            '  └─ div.section-container',
+            '      ├─ div.section-header (centered)',
+            '      └─ div.learn-grid (2 columns, max-width: 900px)',
+            '          └─ div.learn-item x6 (flex row)',
+            '              ├─ div.learn-number (brand badge)',
+            '              └─ div (h4 + p)'
+          ]
+        },
+        {
+          name: 'Steps Section',
+          tag: 'section',
+          desc: 'Vertical timeline with 7 numbered steps. Connected by a vertical line (::after pseudo-element). Each step has a "Pro Tip" callout box.',
+          structure: [
+            'section.steps#steps (white bg)',
+            '  └─ div.steps-container (max-width: 900px)',
+            '      ├─ div.section-header (centered)',
+            '      └─ div.step-item x7 (grid: 80px 1fr)',
+            '          ├─ div.step-number (brand square)',
+            '          └─ div.step-content',
+            '              ├─ h3 (step title)',
+            '              ├─ p (explanation)',
+            '              └─ div.step-tip (left border accent)'
+          ]
+        },
+        {
+          name: 'Preview Section',
+          tag: 'section',
+          desc: 'Dark gradient background with two columns. Left: download list. Right: testimonial card with glassmorphism effect.',
+          structure: [
+            'section.preview (gradient: brand to brand-dark)',
+            '  └─ div.preview-container (grid, white text)',
+            '      ├─ div.preview-content',
+            '      │   ├─ h2 (section title)',
+            '      │   ├─ p (description)',
+            '      │   ├─ ul.preview-list (checkmark items)',
+            '      │   └─ a.btn-secondary (CTA)',
+            '      └─ div.preview-visual (glassmorphism)',
+            '          └─ div.preview-card (white card)',
+            '              ├─ div.preview-card-header (avatar + name)',
+            '              ├─ p.preview-card-text (quote)',
+            '              └─ div.preview-card-stars (5 stars)'
+          ]
+        },
+        {
+          name: 'Testimonials',
+          tag: 'section',
+          desc: 'Three testimonial cards with star ratings, quotes, and author info. Hover lifts card with shadow.',
+          structure: [
+            'section.testimonials (gradient bg)',
+            '  └─ div.section-container',
+            '      ├─ div.section-header (centered)',
+            '      └─ div.testimonials-grid (3 columns)',
+            '          └─ div.testimonial-card x3',
+            '              ├─ div.testimonial-stars (5 SVG stars)',
+            '              ├─ p.testimonial-text (quote)',
+            '              └─ div.testimonial-author (flex)',
+            '                  ├─ div.testimonial-avatar (initials)',
+            '                  └─ div (name + role)'
+          ]
+        },
+        {
+          name: 'FAQ Section',
+          tag: 'section',
+          desc: 'Accordion-style questions. JavaScript toggles max-height for smooth expand/collapse. Only one open at a time.',
+          structure: [
+            'section.faq#faq (white bg)',
+            '  └─ div.faq-container (max-width: 800px)',
+            '      ├─ div.section-header (centered)',
+            '      └─ div.faq-item x5',
+            '          ├─ button.faq-question (flex, space-between)',
+            '          │   ├─ text (question)',
+            '          │   └─ svg (chevron, rotates)',
+            '          └─ div.faq-answer (max-height: 0, transitions)',
+            '              └─ p (answer text)'
+          ]
+        },
+        {
+          name: 'Final CTA',
+          tag: 'section',
+          desc: 'Email capture form with centered layout. Simple email input + submit button. Trust note below.',
+          structure: [
+            'section.final-cta#final-cta (warm bg, centered)',
+            '  └─ div.final-cta-container (max-width: 640px)',
+            '      ├─ h2 (heading)',
+            '      ├─ p (description)',
+            '      ├─ form.final-cta-form (flex, email + button)',
+            '      │   ├─ input[type="email"] (rounded, focus ring)',
+            '      │   └─ button.btn-primary (submit)',
+            '      └─ p.final-cta-note (trust text + icon)'
+          ]
+        },
+        {
+          name: 'Footer',
+          tag: 'footer',
+          desc: 'Dark footer with 4-column grid. Brand info + 3 link columns. Social icons at bottom.',
+          structure: [
+            'footer.footer (dark bg)',
+            '  └─ div.footer-container',
+            '      ├─ div.footer-grid (4 columns)',
+            '      │   ├─ div (brand + about text)',
+            '      │   ├─ div.footer-col (Learn links)',
+            '      │   ├─ div.footer-col (Resources links)',
+            '      │   └─ div.footer-col (Legal links)',
+            '      └─ div.footer-bottom (flex, space-between)',
+            '          ├─ p (copyright)',
+            '          └─ div.footer-social (3 icon links)'
+          ]
+        }
+      ];
+
+      const grid = document.getElementById('breakdownGrid');
+      grid.innerHTML = sections.map(s => `
+        <div class="breakdown-card">
+          <h3>
+            <span class="tag tag-${s.tag}">&lt;${s.tag}&gt;</span>
+            ${s.name}
+          </h3>
+          <p>${s.desc}</p>
+          <ul class="structure-list">
+            ${s.structure.map(line => `
+              <li>
+                ${line.replace(/^(\s*)(└─|├─)/, (m, space, branch) => 
+                  `<span class="indent">${space}</span><span style="color: var(--accent-soft);">${branch}</span>`
+                ).replace(/\s{2}/g, '&nbsp;&nbsp;')}
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `).join('');
+    }
+
+    // Initialize
+    document.getElementById('treeBody').innerHTML = renderTree(pageStructure);
+    renderBreakdown();
+  </script>
+</body>
+</html>
