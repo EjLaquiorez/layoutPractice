@@ -11,7 +11,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: Inter, system-ui, sans-serif;
 }
@@ -23,11 +22,9 @@ body {
   left: 0;
   width: 100%;
   z-index: 1000;
-
   background: var(--bg);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-
   border-bottom: 1px solid var(--border);
 }
 
@@ -35,10 +32,8 @@ body {
 .nav-container {
   max-width: 1200px;
   height: 72px;
-
   margin: 0 auto;
   padding: 0 24px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -55,6 +50,7 @@ body {
   font-size: 1.25rem;
   font-weight: 700;
 }
+
 
 .nav-brand svg {
   width: 24px;
@@ -75,7 +71,6 @@ body {
   text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-
   transition: color 0.2s ease;
 }
 
@@ -101,3 +96,6 @@ body {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(91, 77, 245, 0.25);
 }
+
+
+
