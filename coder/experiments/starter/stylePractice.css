@@ -97,5 +97,170 @@ body {
   box-shadow: 0 8px 20px rgba(91, 77, 245, 0.25);
 }
 
+-----------------bodylayout-------------------
 
+  .hero {
+      background-color: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+    }
 
+    .hero-container {
+      /* center container and keep equal spacing on all sides */
+      width: min(100%, 1200px);
+      max-width: 1200px;
+      margin: 15rem auto 0;
+      padding: 24px;
+      box-sizing: border-box;
+    }
+
+    .hero-content {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+     /* ===== Badge ===== */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #ffffff;
+      color: #4c1d95;
+      font-size: 0.875rem;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 9999px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      border: 1px solid #e5e7eb;
+    }
+
+    .hero-badge svg {
+      width: 1rem;
+      height: 1rem;
+      color: #4c1d95;
+    }
+
+       /* ===== Heading ===== */
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.1;
+      color: #111827;
+      letter-spacing: -0.02em;
+    }
+
+    .hero h1 .accent {
+      color: #6366f1;
+    }
+
+       /* ===== Subtitle ===== */
+    .hero-subtitle {
+      font-size: 1.125rem;
+      color: #6b7280;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    /* ===== Buttons ===== */
+    .hero-actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      padding: 0.875rem 1.75rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background-color: #6366f1;
+      color: #ffffff;
+      box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-primary:hover {
+      background-color: #4f46e5;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 8px -1px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: #ffffff;
+      color: #111827;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-secondary:hover {
+      background-color: #f9fafb;
+      border-color: #d1d5db;
+    }
+
+        /* ===== Trust Section ===== */
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-top: 0.5rem;
+    }
+
+    .trust-avatars {
+      display: flex;
+      align-items: center;
+    }
+
+    .trust-avatar {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: #ffffff;
+      border: 2px solid #ffffff;
+      margin-left: -0.5rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    .trust-avatar:first-child {
+      margin-left: 0;
+      background-color: #6366f1;
+    }
+
+    .trust-avatar:nth-child(2) {
+      background-color: #ec4899;
+    }
+
+    .trust-avatar:nth-child(3) {
+      background-color: #10b981;
+    }
+
+    .trust-text {
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+
+    .trust-text strong {
+      color: #111827;
+      font-weight: 700;
+    }
