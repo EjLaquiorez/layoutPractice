@@ -17,17 +17,26 @@
       <svg>...</svg>
       LandingCraft
     </a>
-    <div class="nav-links">
-      <a href="#problem">
-        The Problem
-      </a>
-      <a href="#learn">
-        What You Will Learn
-      </a>
-      <a href="#final-cta"
-         class="nav-cta">
-        Get Free Guide
-      </a>
+    <!-- Hamburger Toggle -->
+    <button class="nav-toggle" id="navToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <!-- Navigation Menu -->
+    <div class="nav-menu" id="navMenu">
+      <div class="nav-links">
+        <a href="#problem">
+          The Problem
+        </a>
+        <a href="#learn">
+          What You Will Learn
+        </a>
+        <a href="#final-cta"
+           class="nav-cta">
+          Get Free Guide
+        </a>
+      </div>
     </div>
   </div>
 </nav>
@@ -71,6 +80,36 @@
       </div>
     </div>
   </section>
+
+  <script>
+    // Hamburger Menu Toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu on button click
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const isClickInside = document.querySelector('.nav').contains(e.target);
+      if (!isClickInside && navMenu.classList.contains('active')) {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    });
+  </script>
 
 </body>
 </html>
