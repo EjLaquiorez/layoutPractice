@@ -277,6 +277,22 @@
         navMenu.classList.remove('active');
       }
     });
+
+
+     function toggleFaq(button) {
+    const item = button.closest('.faq-item');
+    const isActive = item.classList.contains('active');
+    
+    // Close all items
+    document.querySelectorAll('.faq-item').forEach(faq => {
+      faq.classList.remove('active');
+    });
+    
+    // Open clicked item if it wasn't already open
+    if (!isActive) {
+      item.classList.add('active');
+    }
+  }
   </script>
 
 </body>
