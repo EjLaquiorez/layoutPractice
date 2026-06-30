@@ -582,3 +582,117 @@ body {
       color: #6366f1;
       font-weight: 600;
     }
+
+    /*---------------------------*/
+    .final-cta {
+  background-color: #4f46e5; /* Indigo-600 */
+  padding: 80px 20px;
+  text-align: center;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.final-cta-container {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.final-cta h2 {
+  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 16px 0;
+}
+
+.final-cta h2 + p {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+.final-cta-form {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.final-cta-form input[type="email"] {
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 1rem;
+  padding: 14px 24px;
+  width: 260px;
+  outline: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.final-cta-form input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.final-cta-form input[type="email"]:focus {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.final-cta-form .btn-primary {
+  background-color: #ffffff;
+  color: #4f46e5;
+  border: none;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 14px 28px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+}
+
+.final-cta-form .btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.final-cta-note {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.final-cta-note svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .final-cta-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .final-cta-form input[type="email"] {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .final-cta-form .btn-primary {
+    width: 100%;
+    max-width: 320px;
+  }
+  
+  .final-cta h2 {
+    font-size: 1.5rem;
+  }
+}
